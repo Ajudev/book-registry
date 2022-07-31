@@ -1,19 +1,38 @@
 version: '3.3'
 services:
-   db:
-     image: mysql:5.7
-     container_name: nodejs-sql
-     volumes:
-       - db_data:/var/lib/mysql
-     restart: always
-     environment:
-       MYSQL_ROOT_PASSWORD: test@123
-       MYSQL_DATABASE: userlog
-       MYSQL_USER: test
-       MYSQL_PASSWORD: test@123
-     ports:
-      - "127.0.0.1:3307:3306"
+  db:
+    image: mysql:5.7
+    container_name: nodejs-sql
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 20s
+      timeout: 10s
+      retries: 2
+    environment:
+      MYSQL_ROOT_PASSWORD: test@123
+      MYSQL_DATABASE: userlog
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test@123
+    ports:
+      - "0.0.0.0:3307:3306"
+
+  registry_app:
+    container_name: book_registry
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+    command: npm run dev
+    environment:
+      NODE_ENV: development
+      DB_HOST: db
+    ports:
+      - "0.0.0.0:6018:1234"
+      - "0.0.0.0:9229:9229"
 
 volumes:
   db_data:
-

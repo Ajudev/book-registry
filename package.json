@@ -5,8 +5,12 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "export NODE_ENV=development && nodemon app.js",
-    "prod": "export NODE_ENV=production && node app.js"
+    "dev": "nodemon --inspect=0.0.0.0 app.js",
+    "dev_win": "set NODE_ENV=development&& nodemon app.js",
+    "dev_mac": "export NODE_ENV=development && nodemon app.js",
+    "prod": "node app.js",
+    "prod_win": "set NODE_ENV=production&& nodemon app.js",
+    "prod_mac": "export NODE_ENV=production && nodemon app.js"
   },
   "author": "Ajudev",
   "license": "MIT",

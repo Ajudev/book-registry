@@ -1,9 +1,7 @@
 const mysql = require("mysql");
 const config = require("../config/config");
 
-const writeToDB = (query, params, callback) => {
-  console.log("DB NAME", config.DB_NAME);
-  console.log("DB PORT", config.DB_PORT);
+const dbQuery = (query, params, callback) => {
   const connection = mysql.createConnection({
     host: config.DB_HOST,
     user: config.DB_USER,
@@ -16,4 +14,4 @@ const writeToDB = (query, params, callback) => {
   connection.end();
 };
 
-module.exports = writeToDB;
+module.exports = dbQuery;
