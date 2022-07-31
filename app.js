@@ -22,3 +22,5 @@ app.use("/api/users", users);
 app.listen(config.PORT, config.HOST, () =>
   console.log(`Server running on link http://${config.HOST}:${config.PORT}`)
 );
+
+module.exports = app;

@@ -4,7 +4,7 @@
   "description": "User Login System built using NodeJS",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "dev": "nodemon --inspect=0.0.0.0 app.js",
     "dev_win": "set NODE_ENV=development&& nodemon app.js",
     "dev_mac": "export NODE_ENV=development && nodemon app.js",
@@ -15,6 +15,9 @@
   "author": "Ajudev",
   "license": "MIT",
   "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0",
     "nodemon": "^2.0.19"
   },
   "dependencies": {
