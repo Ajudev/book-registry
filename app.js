@@ -1,6 +1,11 @@
+//config import
 const config = require("./config/config");
+
+// route imports
 // const login = require("./routes/login");
 const register = require("./routes/register");
+const users = require("./routes/users");
+
 const dbConfig = require("./db_setup");
 const express = require("express");
 const app = express();
@@ -11,6 +16,7 @@ dbConfig();
 
 //API Routes
 app.use("/api/register", register);
+app.use("/api/users", users);
 // app.use('/api/login', login)
 
 app.listen(config.PORT, config.HOST, () =>
