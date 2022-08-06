@@ -31,7 +31,7 @@ services:
       NODE_ENV: development
       DB_HOST: db
     ports:
-      - "0.0.0.0:6018:1234"
+      - "0.0.0.0:4321:4321"
       - "0.0.0.0:9229:9229"
 
 volumes:
