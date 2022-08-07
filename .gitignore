@@ -1,4 +1,7 @@
 .vscode
+node_modules
+
 config/development.env
 config/production.env
-node_modules
+
+prisma/migrations/*

@@ -1,17 +1,5 @@
-const mysql = require("mysql");
-const config = require("../config/config");
+const { PrismaClient } = require("@prisma/client");
 
-const dbQuery = (query, params, callback) => {
-  const connection = mysql.createConnection({
-    host: config.DB_HOST,
-    user: config.DB_USER,
-    password: config.DB_PASSWORD,
-    database: config.DB_NAME,
-    port: config.DB_PORT,
-  });
-  connection.connect();
-  connection.query(query, params, callback);
-  connection.end();
-};
+const prisma = new PrismaClient();
 
-module.exports = dbQuery;
+module.exports = prisma;
