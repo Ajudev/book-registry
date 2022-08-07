@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const dbQuery = require("../services/db");
 
-router.get("", async (req, resp) => {
+router.get("/all", async (req, resp) => {
   const users = await dbQuery.user.findMany({
     select: {
       id: true,

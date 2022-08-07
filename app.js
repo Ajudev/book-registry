@@ -11,18 +11,21 @@ const app = express();
 
 //Middlewares
 const errorHandler = require("./middlewares/errorHandler");
+const authenticate = require("./middlewares/auth");
 
 app.use(express.json());
 
 //API Routes
-app.use("/api/register", register);
-app.use("/api/users", users);
-app.use("/api/login", login);
+app.use("/api/user/register", register);
+app.use("/api/user/login", login);
+app.use("/api/user/fetch", authenticate, users);
 
 app.use(errorHandler);
 
-app.listen(config.PORT, config.HOST, () =>
-  console.log(`Server running on link http://${config.HOST}:${config.PORT}`)
+app.listen(process.env.PORT, process.env.HOST, () =>
+  console.log(
+    `Server running on link http://${process.env.HOST}:${process.env.PORT}`
+  )
 );
 
 module.exports = app;

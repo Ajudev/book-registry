@@ -29,7 +29,6 @@ services:
     command: npm run dev
     environment:
       NODE_ENV: development
-      DATABASE_URL: mysql://root:test@123@db:3306/userlog?schema=public
     ports:
       - "0.0.0.0:4321:4321"
       - "0.0.0.0:9229:9229"
